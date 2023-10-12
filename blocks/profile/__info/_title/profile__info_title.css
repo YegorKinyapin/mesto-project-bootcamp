@@ -1,0 +1,17 @@
+.profile__info_title {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 48px;
+    grid-area: title;
+    margin: 0;
+}
+@media screen and (max-width: 1279px) {
+    .profile__info_title {
+        font-size: 27px;
+        line-height: normal;
+        justify-self: center;
+    }
+}

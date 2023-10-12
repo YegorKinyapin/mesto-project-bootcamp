@@ -1,0 +1,14 @@
+.popap__container_submit-button_text {
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+@media screen and (max-width: 1279px) {
+    .popap__container_submit-button_text {
+        font-size: 14px;
+    }
+}

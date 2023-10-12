@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./pages/index.css" media="screen"/>
+    <title>Путешествия по России</title>
+</head>
+<body class="body">
+    <div class="page">
+        <header class="header">
+            <img class="header__logo" src="./images/logo.svg" alt="Логотип Место">
+            <img class="header__line" src="./images/Line.png" alt="Линия">
+        </header>
+        <main class="main">
+            <section class="profile">
+                <img class="profile__image" src="./images/image.jpg" alt="Жак-Ив Кусто на фото">
+                <div class="profile__info">
+                    <h1 class="profile__info_title">Жак-Ив Кусто</h1>
+                    <p class="profile__info_subtitle">Исследователь океана</p>
+                    <!-- <a class="profile__info_edit-button" href="#"><img class="profile__info_edit-button_image" src="./images/Edit Button.svg" alt="Иконка с карандашом"></a> -->
+                    <button class="profile__info_edit-button"></button>
+                </div>
+                <!-- <a href="#" class="profile__add-button"><img class="profile__add-button_image" src="./images/Add Button.svg" alt="Кнопка добавления фото"></a> -->
+                <button class="profile__add-button"></button>
+            </section>
+            <section class="elements">
+                <div class="element">
+                    <img class="element__image" src="./images/karachaevo.jpg" alt="Карачаевск">
+                    <div class="element__panel">
+                        <h2 class="element__panel_title">Карачаевск</h2>
+                        <a class="element__panel_heart" href="#"><img class="element__panel_heart_image" src="./images/heart.svg" alt="Сердце"></a>
+                    </div>
+                </div>
+                <div class="element">
+                    <img class="element__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
+                    <div class="element__panel">
+                        <h2 class="element__panel_title">Гора Эльбрус</h2>
+                        <a class="element__panel_heart" href="#"><img class="element__panel_heart_image" src="./images/heart.svg" alt="Сердце"></a>
+                    </div>
+                </div>
+                <div class="element">
+                    <img class="element__image" src="./images/dombay.jpg" alt="Домбай">
+                    <div class="element__panel">
+                        <h2 class="element__panel_title">Домбай</h2>
+                        <a class="element__panel_heart" href="#"><img class="element__panel_heart_image" src="./images/heart.svg" alt="Сердце"></a>
+                    </div>
+                </div>
+                <div class="element">
+                    <img class="element__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
+                    <div class="element__panel">
+                        <h2 class="element__panel_title">Гора Эльбрус</h2>
+                        <a class="element__panel_heart" href="#"><img class="element__panel_heart_image" src="./images/heart.svg" alt="Сердце"></a>
+                    </div>
+                </div>
+                <div class="element">
+                    <img class="element__image" src="./images/dombay.jpg" alt="Домбай">
+                    <div class="element__panel">
+                        <h2 class="element__panel_title">Домбай</h2>
+                        <a class="element__panel_heart" href="#"><img class="element__panel_heart_image" src="./images/heart.svg" alt="Сердце"></a>
+                    </div>
+                </div>
+                <div class="element">
+                    <img class="element__image" src="./images/karachaevo.jpg" alt="Карачаевск">
+                    <div class="element__panel">
+                        <h2 class="element__panel_title">Карачаевск</h2>
+                        <a class="element__panel_heart" href="#"><img class="element__panel_heart_image" src="./images/heart.svg" alt="Сердце"></a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__text">&copy;2023 Mesto Russia</p>
+        </footer>
+    </div>
+    <div class="popap popap__opened">
+        <div class="popap__container">
+            <button class="popap__container_close"></button>
+            <h2 class="popap__container_title">Редактировать профиль</h2>
+            <input type="text" class="popap__container_form popap__container_form_name" name="full-name" placeholder="Жак-Ив Кусто">
+            <input type="text" class="popap__container_form popap__container_form_activity" name="activity" placeholder="Исследователь океана">
+            <button class="popap__container_submit-button"><p class="popap__container_submit-button_text">Сохранить</p></button>
+        </div>
+    </div>
+</body>
+</html>

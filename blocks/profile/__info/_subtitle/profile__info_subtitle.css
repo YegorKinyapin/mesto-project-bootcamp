@@ -1,0 +1,17 @@
+.profile__info_subtitle {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    grid-area: subtitle;
+    margin: 0;
+}
+@media screen and (max-width: 1279px) {
+    .profile__info_subtitle {
+        font-size: 14px;
+        line-height: normal;
+        justify-self: center;
+    }
+}
