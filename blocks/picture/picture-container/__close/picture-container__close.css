@@ -1,0 +1,17 @@
+.picture-container__close {
+    background-image: url(../../../../images/Close-Icon.svg);
+    width: 32px;
+    height: 32px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    position: absolute;
+    top: -38px;
+    right: -40px;
+    border: none;
+    padding: 0;
+    transition: 0.2s;
+    cursor: pointer;
+    z-index: 15;
+}

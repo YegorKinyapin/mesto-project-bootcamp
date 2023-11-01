@@ -1,0 +1,8 @@
+.picture-container__image {
+    max-height: 75vh;
+    max-width: 75vw;
+    position: relative;
+    z-index: 10;
+    width: auto;
+    height: auto;
+}

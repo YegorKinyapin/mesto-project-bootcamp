@@ -15,71 +15,57 @@
             <section class="profile">
                 <img class="profile__image" src="./images/image.jpg" alt="Аватар пользователя">
                 <div class="profile__info">
-                    <h1 class="profile__info_title">Жак-Ив Кусто</h1>
-                    <p class="profile__info_subtitle">Исследователь океана</p>
+                    <h1 class="profile__info_title"></h1>
+                    <p class="profile__info_subtitle"></p>
                     <button name="button" class="profile__info_edit-button"></button>
                 </div>
                 <button name="button" class="profile__add-button"></button>
             </section>
-            <section class="elements">
-                <div class="element">
-                    <img class="element__image" src="./images/photo_2023-07-06_16-59-58.jpg" alt="Карачаевск">
-                    <div class="element__panel">
-                        <h2 class="element__panel_title">Карачаево-Черкессия</h2>
-                        <button name="button" class="element__panel_heart"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img class="element__image" src="./images/photo_2023-07-12_19-51-40.jpg" alt="Гора Эльбрус">
-                    <div class="element__panel">
-                        <h2 class="element__panel_title">Гора Эльбрус</h2>
-                        <button name="button" class="element__panel_heart"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img class="element__image" src="./images/бебры.jpg" alt="Домбай">
-                    <div class="element__panel">
-                        <h2 class="element__panel_title">Домбай</h2>
-                        <button name="button" class="element__panel_heart"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img class="element__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
-                    <div class="element__panel">
-                        <h2 class="element__panel_title">Гора Эльбрус</h2>
-                        <button name="button" class="element__panel_heart"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img class="element__image" src="./images/dombay.jpg" alt="Домбай">
-                    <div class="element__panel">
-                        <h2 class="element__panel_title">Домбай</h2>
-                        <button name="button" class="element__panel_heart"></button>
-                    </div>
-                </div>
-                <div class="element">
-                    <img class="element__image" src="./images/karachaevo.jpg" alt="Карачаевск">
-                    <div class="element__panel">
-                        <h2 class="element__panel_title">Карачаевск</h2>
-                        <button name="button" class="element__panel_heart"></button>
-                    </div>
-                </div>
-            </section>
+            <section class="elements"></section>
         </main>
         <footer class="footer">
             <p class="footer__text" lang="en">&copy;2023 Mesto Russia</p>
         </footer>
     </div>
-    <div class="popup">
+    <div class="popup popup_profile">
         <div class="popup__container">
             <button name="button" class="popup__container_close"></button>
             <h2 class="popup__container_title">Редактировать профиль</h2>
-            <form name="formName">
+            <form name="form" class="form form_profile">
                 <input type="text" class="popup__container_form popup__container_form_name" name="full-name" placeholder="Жак-Ив Кусто">
                 <input type="text" class="popup__container_form popup__container_form_activity" name="activity" placeholder="Исследователь океана">
-                <button name="submit" class="popup__container_submit-button">Сохранить</button>
+                <button name="submit" class="popup__container_submit-button" type="submit">Сохранить</button>
             </form>
         </div>
     </div>
+    <div class="popup popup_cards">
+        <div class="popup__container">
+            <button name="button" class="popup__container_close"></button>
+            <h2 class="popup__container_title">Новое место</h2>
+            <form name="form" class="form form_cards">
+                <input type="text" class="popup__container_form popup__container_form_place" name="full-name" placeholder="Название">
+                <input type="text" class="popup__container_form popup__container_form_link" name="activity" placeholder="Ссылка на картинку">
+                <button name="submit" class="popup__container_submit-button" type="submit">Создать</button>
+            </form>
+        </div>
+    </div>
+    <template class="template-card">
+        <div class="element">
+            <img class="element__image" src="./images/photo_2023-07-06_16-59-58.jpg" alt="Карачаевск">
+            <button name="button" class="element__delete-button"></button>
+            <div class="element__panel">
+                <h2 class="element__panel_title">Карачаево-Черкессия</h2>
+                <button name="button" class="button element__panel_heart"></button>
+            </div>
+        </div>
+    </template>
+    <div class="picture">
+        <div class="picture-container">
+            <img id="picture" class="picture-container__image" alt="Картинка в блоге" src="./images/probnik.png">
+            <span id="text" class="picture-container__text">Карачаевск</span>
+            <button name="button" class="picture-container__close"></button>
+        </div>
+    </div>
 </body>
+<script src="./index.js"></script>
 </html>
