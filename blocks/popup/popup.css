@@ -8,4 +8,12 @@
     align-items: center;
     justify-content: center;
     display: none;
+    transition: visibility 0.2s, opacity 0.2s ease-in;
+    z-index: 5;
+}
+.popup_opened {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+
 }
