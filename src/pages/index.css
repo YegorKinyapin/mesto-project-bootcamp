@@ -29,3 +29,7 @@
 @import url(../blocks/picture/picture-container/picture-container.css);
 @import url(../blocks/picture/picture-container/__image/picture-container__image.css);
 @import url(../blocks/picture/picture-container/__text/picture-container__text.css);
+@import url(../blocks/popup/__container/_form/form__input-error.css);
+@import url(../blocks/popup/__container/_form/form__field.css);
+@import url(../blocks/popup/__container/_form/form__input_type_error.css);
+@import url(../blocks/popup/__container/_form/form__set.css);
