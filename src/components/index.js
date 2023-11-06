@@ -1,9 +1,8 @@
 import '../pages/index.css';
-import {handleSubmitCard, handleSubmitProfile, closePopupOverlay, closePopupEsc} from './modal.js';
-import {openPopup, closePopup} from './utils.js';
+import {closePopupOverlay, closePopupEsc, openPopup, closePopup} from './modal.js';
 import {enableValidation, setEventListeners, toggleButtonState, hasInvalidInput, checkInputValidity, 
   hideInputError, showInputError} from './validate.js';
-import {creatCard, addCard} from './card.js';
+import {creatCard} from './card.js';
 
 const profilePopup = document.querySelector('.popup-profile');
 const cardPopup = document.querySelector('.popup-cards');
@@ -27,6 +26,14 @@ const cardTemplate = document.
 querySelector('.template-card').content
 .querySelector('.element');
 const cardsSection = document.querySelector('.elements');
+
+function addCard(card) {
+  cardsSection.prepend(card);
+}
+
+initialCards.forEach((item) => {
+  addCard(creatCard(`${item.name}`, `${item.link}`));
+})
 
 const initialCards = [
   {
@@ -59,6 +66,22 @@ const initialCards = [
 pictureCloseButton.addEventListener('click', () => {
   closePopup(picture);
 });
+
+function handleSubmitCard(evt) {
+  evt.preventDefault();
+  if (cardPopup.classList.contains('popup__container_submit-button_inactive')) {
+    return;
+  }
+  addCard(creatCard(formPlace.value, formLink.value));
+  closePopup(cardPopup);
+  evt.target.reset();
+}
+function handleSubmitProfile(evt) {
+  evt.preventDefault();
+  profileName.textContent = formName.value;
+  profileActivity.textContent = formActivity.value;
+  closePopup(profilePopup);
+}
 
 formSectionCards.addEventListener('submit', handleSubmitCard);
 

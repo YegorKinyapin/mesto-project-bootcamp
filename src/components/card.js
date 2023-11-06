@@ -27,11 +27,3 @@ export function creatCard(name, image) {
 
     return newCard;
 }
-
-export function addCard(card) {
-    cardsSection.prepend(card);
-}
-
-initialCards.forEach((item) => {
-    addCard(creatCard(`${item.name}`, `${item.link}`));
-})

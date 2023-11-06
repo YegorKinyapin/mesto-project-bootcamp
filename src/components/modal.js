@@ -1,20 +1,3 @@
-export function handleSubmitCard(evt) {
-    evt.preventDefault();
-    if (cardPopup.classList.contains('popup__container_submit-button_inactive')) {
-      return;
-    }
-    addCard(creatCard(formPlace.value, formLink.value));
-    closePopup(cardPopup);
-    evt.target.reset();
-}
-
-export function handleSubmitProfile(evt) {
-    evt.preventDefault();
-    profileName.textContent = formName.value;
-    profileActivity.textContent = formActivity.value;
-    closePopup(profilePopup);
-}
-
 export function closePopupOverlay(popupItem) {
   popupItem.addEventListener("click", (evt) => {
     if (evt.currentTarget === evt.target) {
@@ -22,10 +5,18 @@ export function closePopupOverlay(popupItem) {
     }
   });
 }
-export function closePopupEsc(popupItem) {
-  document.addEventListener('keydown', evt => {
+
+export function closePopupEsc(evt) {
     if (evt.key === 'Escape') {
       closePopup(popupItem);
     }
-  });
+}
+
+export function openPopup(popupItem) {
+  popupItem.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
+}
+export function closePopup(popupItem) {
+  popupItem.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEsc);
 }
