@@ -12,7 +12,8 @@
         </header>
         <main class="main">
             <section class="profile">
-                <img class="profile__image" src="<%=require('./images/image.jpg')%>" alt="Аватар пользователя">
+                <div class="overlay"><img alt="Аватар пользователя" src="<%=require('./images/Vector.svg')%>"></div>
+                <img class="profile__image profile__image_hover" src="<%=require('./images/image.jpg')%>" alt="Аватар пользователя">
                 <div class="profile__info">
                     <h1 class="profile__info_title"></h1>
                     <p class="profile__info_subtitle"></p>
@@ -88,13 +89,36 @@
             </form>
         </div>
     </div>
+    <div class="popup popup-avatar">
+        <div class="popup__container">
+            <button name="button" class="popup__close"></button>
+            <h2 class="popup__container_title">Обновить аватар</h2>
+            <form name="form" class="form form_avatar" novalidate>
+                <fieldset class="form__set">
+                    <label class="form__field">
+                        <input type="url" 
+                        class="popup__container_form popup__container_form_avatar" 
+                        id="avatar-input" 
+                        name="avatar" 
+                        placeholder="Введите ссылку"
+                        required >
+                        <span class="form__input-error avatar-input-error"></span>
+                    </label>
+                    <button name="submit" class="popup__container_submit-button" type="submit">Сохранить</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
     <template class="template-card">
         <div class="element">
             <img class="element__image" src="./images/photo_2023-07-06_16-59-58.jpg" alt="Карачаевск">
             <button name="button" class="element__delete-button"></button>
             <div class="element__panel">
                 <h2 class="element__panel_title">Карачаево-Черкессия</h2>
-                <button name="button" class="button element__panel_heart"></button>
+                <div class="heart">
+                    <button name="button" class="button element__panel_heart"></button>
+                    <span class="element__panel_heart-number">1</span>
+                </div>
             </div>
         </div>
     </template>

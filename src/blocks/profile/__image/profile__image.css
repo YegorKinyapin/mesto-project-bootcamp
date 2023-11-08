@@ -1,8 +1,31 @@
 .profile__image {
+    z-index: 1;
     border-radius: 50%;
     width: 120px;
     height: 120px;
     background-size: cover;
     object-position: center;
     display: block;
+    cursor: pointer;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-size: cover;
+    object-position: center;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    z-index: 2;
+    display: none;
+}
+.overlay_active {
+    display: flex;
+    cursor: pointer;
 }

@@ -33,3 +33,5 @@
 @import url(../blocks/popup/__container/_form/form__field.css);
 @import url(../blocks/popup/__container/_form/form__input_type_error.css);
 @import url(../blocks/popup/__container/_form/form__set.css);
+@import url(../blocks/element/heart/heart.css);
+@import url(../blocks/element/__panel/_heart/element__panel_heart-number.css);

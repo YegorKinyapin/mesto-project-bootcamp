@@ -17,20 +17,19 @@ const config = {
     return fetch(`${config.baseUrl}/users/me`, {
         headers: config.headers
     })
-    .then(res => 
-        {checkResponse});
+    .then(checkResponse);
   }
 
-  export const patchProfileInfo = () => {
-    return fetch('https://nomoreparties.co/v1/wbf-cohort-13/users/me', {
+  export const patchProfileInfo = (name, about) => {
+    return fetch(`${config.baseUrl}/users/me`, {
         method: 'PATCH',
         headers: {
             authorization: '31626812-2bc6-470a-a9d7-7693009ae992',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            name: 'Киняпин Егор',
-            about: 'Фронтенд разработчик'
+            name: name,
+            about: about
         })
     })
     .then(checkResponse)
@@ -51,6 +50,40 @@ const config = {
             name: name,
             link: link
         })
+    })
+    .then(checkResponse)
+  }
+
+  export function likeCard(cardId) {
+    return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
+      headers: config.headers,
+      method: 'PUT'
+    })
+    .then(checkResponse)
+  }
+  export function unlikeCard(cardId) {
+    return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
+      headers: config.headers,
+      method: 'DELETE'
+    })
+    .then(checkResponse)
+  }
+
+   export function deleteCard(cardId) {
+    return fetch(`${config.baseUrl}/cards/${cardId}`, {
+      headers: config.headers,
+      method: 'DELETE'
+    })
+    .then(checkResponse)
+  }
+
+  export function changeAvatar(avatar) {
+    return fetch(`${config.baseUrl}/users/me/avatar`, {
+      headers: config.headers,
+      method: 'PATCH',
+      body: JSON.stringify({
+        avatar: avatar
+      })
     })
     .then(checkResponse)
   }
