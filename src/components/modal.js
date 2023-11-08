@@ -7,9 +7,10 @@ export function closePopupOverlay(popupItem) {
 }
 
 export function closePopupEsc(evt) {
-    if (evt.key === 'Escape') {
-      closePopup(popupItem);
-    }
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
 }
 
 export function openPopup(popupItem) {

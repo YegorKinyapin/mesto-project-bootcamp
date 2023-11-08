@@ -1,8 +1,8 @@
 import '../pages/index.css';
 import {closePopupOverlay, closePopupEsc, openPopup, closePopup} from './modal.js';
-import {enableValidation, setEventListeners, toggleButtonState, hasInvalidInput, checkInputValidity, 
-  hideInputError, showInputError} from './validate.js';
+import {enableValidation} from './validate.js';
 import {creatCard} from './card.js';
+import {getInitialCards, saveCards, getProfileInfo, patchProfileInfo} from './api.js';
 
 const profilePopup = document.querySelector('.popup-profile');
 const cardPopup = document.querySelector('.popup-cards');
@@ -26,62 +26,46 @@ const cardTemplate = document.
 querySelector('.template-card').content
 .querySelector('.element');
 const cardsSection = document.querySelector('.elements');
+const cardSubmitButton = cardPopup.querySelector('.popup__container_submit-button');
+
+const allSelectorClasses = {
+  form: '.form',
+  fieldset: '.form__set',
+  input: '.popup__container_form',
+  submitButton: '.popup__container_submit-button',
+  inputTypeError: 'form__input_type_error',
+  errorText: 'form__input-error_active'
+}
 
 function addCard(card) {
   cardsSection.prepend(card);
 }
 
-initialCards.forEach((item) => {
-  addCard(creatCard(`${item.name}`, `${item.link}`));
-})
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-
-pictureCloseButton.addEventListener('click', () => {
-  closePopup(picture);
-});
-
 function handleSubmitCard(evt) {
   evt.preventDefault();
-  if (cardPopup.classList.contains('popup__container_submit-button_inactive')) {
-    return;
-  }
-  addCard(creatCard(formPlace.value, formLink.value));
-  closePopup(cardPopup);
-  evt.target.reset();
+  saveCards(formPlace.value, formLink.value)
+  .then(res => {
+    addCard(creatCard(res));
+    closePopup(cardPopup);
+    evt.target.reset();
+    cardSubmitButton.setAttribute('disabled', true);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 }
+
+
 function handleSubmitProfile(evt) {
   evt.preventDefault();
   profileName.textContent = formName.value;
   profileActivity.textContent = formActivity.value;
   closePopup(profilePopup);
 }
+
+pictureCloseButton.addEventListener('click', () => {
+  closePopup(picture);
+});
 
 formSectionCards.addEventListener('submit', handleSubmitCard);
 
@@ -97,6 +81,8 @@ cardCloseButton.addEventListener('click', () => {
   closePopup(cardPopup);
 });
 editButton.addEventListener('click', () => {
+  formName.value = profileName.textContent;
+  formActivity.value = profileActivity.textContent;
   openPopup(profilePopup);
 });
 profileCloseButton.addEventListener('click', () => {
@@ -109,8 +95,20 @@ closePopupEsc(profilePopup);
 closePopupEsc(cardPopup);
 closePopupEsc(picture);
 
-enableValidation();
+enableValidation(allSelectorClasses);
 
-export {profilePopup, cardPopup, addButton, cardCloseButton, formSectionCards, 
-  formPlace, formLink, editButton, profileCloseButton, profileName, profileActivity, formSectionProfile, formName, formActivity, picture, 
-  pictureCloseButton, pictureImage, pictureText, cardTemplate, cardsSection, initialCards}
+
+getInitialCards()
+.then(res => {
+  console.log(res);
+  res.forEach((item) => {
+    addCard(creatCard(item));
+  })
+})
+.catch((err) => {
+  console.log(err);
+});
+
+// getProfileInfo(patchProfileInfo());
+
+export {openPopup, pictureImage, pictureText, cardTemplate, picture}

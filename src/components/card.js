@@ -1,12 +1,12 @@
-import {picture, pictureImage, pictureText, cardTemplate, cardsSection, openPopup, initialCards} from './index.js';
+import {picture, pictureImage, pictureText, cardTemplate, openPopup} from './index.js';
 
-export function creatCard(name, image) {
+export function creatCard(res) {
     const newCard = cardTemplate.cloneNode(true);
     const cardTitle = newCard.querySelector('.element__panel_title');
     const cardImage = newCard.querySelector('.element__image');
-    cardTitle.textContent = name;
-    cardImage.src = image;
-    cardImage.alt = name;
+    cardTitle.textContent = res.name;
+    cardImage.src = res.link;
+    cardImage.alt = res.name;
 
     const heart = newCard.querySelector('.element__panel_heart');
     heart.addEventListener('click', () => {
@@ -19,9 +19,9 @@ export function creatCard(name, image) {
     })
 
     cardImage.addEventListener('click', () => {
-        pictureImage.src = image;
-        pictureImage.alt = name;
-        pictureText.textContent = name;
+        pictureImage.src = res.link;
+        pictureImage.alt = res.name;
+        pictureText.textContent = res.name;
         openPopup(picture);
     });
 

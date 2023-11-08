@@ -8,14 +8,14 @@
 <body class="body">
     <div class="page">
         <header class="header">
-            <img class="header__logo" src="./images/logo.svg" alt="Логотип Место">
+            <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип Место">
         </header>
         <main class="main">
             <section class="profile">
-                <img class="profile__image" src="./images/image.jpg" alt="Аватар пользователя">
+                <img class="profile__image" src="<%=require('./images/image.jpg')%>" alt="Аватар пользователя">
                 <div class="profile__info">
-                    <h1 class="profile__info_title">Жак-Ив Кусто</h1>
-                    <p class="profile__info_subtitle">Исследователь океана</p>
+                    <h1 class="profile__info_title"></h1>
+                    <p class="profile__info_subtitle"></p>
                     <button name="button" class="profile__info_edit-button"></button>
                 </div>
                 <button name="button" class="profile__add-button"></button>
@@ -100,7 +100,7 @@
     </template>
     <div class="popup picture">
         <div class="picture-container">
-            <img class="picture-container__image" alt="Картинка в блоге" src="./images/dombay.jpg">
+            <img class="picture-container__image" alt="Картинка в блоге" src="">
             <span class="picture-container__text">Карачаевск</span>
             <button name="button" class="popup__close"></button>
         </div>
