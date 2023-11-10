@@ -1,5 +1,5 @@
 import '../pages/index.css';
-import {closePopupOverlay, closePopupEsc, openPopup, closePopup} from './modal.js';
+import {closePopupOverlay, openPopup, closePopup} from './modal.js';
 import {enableValidation} from './validate.js';
 import {creatCard} from './card.js';
 import {getInitialCards, saveCards, getProfileInfo, patchProfileInfo, changeAvatar} from './api.js';
@@ -60,6 +60,9 @@ function handleSubmitAvatar(evt) {
   })
   .catch((err) => {
     console.log(err);
+  })
+  .finally(() => {
+    cardSubmitButton.textContent = 'Сохранить';
   });
 }
 
@@ -67,17 +70,19 @@ function handleSubmitCard(evt) {
   evt.preventDefault();
   cardSubmitButton.textContent = 'Создание...';
   saveCards(formPlace.value, formLink.value)
-  .then(res => {
-    addCard(creatCard(res));
+  .then(card => {
+    addCard(creatCard(card, user));
     closePopup(cardPopup);
     evt.target.reset();
     cardSubmitButton.setAttribute('disabled', true);
   })
   .catch((err) => {
     console.log(err);
+  })
+  .finally(() => {
+    cardSubmitButton.textContent = 'Создать';
   });
 }
-
 
 function handleSubmitProfile(evt) {
   profileSubmitButton.textContent = 'Сохранение...';
@@ -91,7 +96,13 @@ function handleSubmitProfile(evt) {
   .catch((err) => {
     console.log(err);
   })
+  .finally(() => {
+    cardSubmitButton.textContent = 'Сохранить';
+  });
 }
+
+formSectionCards.addEventListener('submit', handleSubmitCard);
+formSectionProfile.addEventListener('submit', handleSubmitProfile);
 
 profileImage.addEventListener('mouseover', () => {
   overlay.classList.toggle('overlay_active');
@@ -109,10 +120,6 @@ overlay.addEventListener('click', () => {
 pictureCloseButton.addEventListener('click', () => {
   closePopup(picture);
 });
-
-formSectionCards.addEventListener('submit', handleSubmitCard);
-
-formSectionProfile.addEventListener('submit', handleSubmitProfile);
 
 formName.value = profileName.textContent;
 formActivity.value = profileActivity.textContent;
@@ -138,14 +145,8 @@ closePopupOverlay(profilePopup);
 closePopupOverlay(cardPopup);
 closePopupOverlay(picture);
 closePopupOverlay(avatarPopup)
-closePopupEsc(profilePopup);
-closePopupEsc(cardPopup);
-closePopupEsc(picture);
-closePopupEsc(avatarPopup);
 
 enableValidation(allSelectorClasses);
-
-
 
 let user;
 

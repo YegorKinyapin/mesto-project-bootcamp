@@ -20,4 +20,5 @@ export function openPopup(popupItem) {
 export function closePopup(popupItem) {
   popupItem.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupEsc);
+  closePopupEsc(popupItem);
 }

@@ -1,11 +1,10 @@
 import {picture, pictureImage, pictureText, cardTemplate, openPopup} from './index.js';
 import {likeCard, unlikeCard, deleteCard} from './api.js';
 
-
-function likesCard (id, evt, likes) {
+function likesCard (id, evt, likes , button) {
     likeCard(id)
     .then(card => {
-        evt.target.closest('element__panel_heart').classList.toggle('element__panel_heart_active');
+        button.classList.toggle('element__panel_heart_active');
         likes.textContent = card.likes.length;
     })
     .catch((err) => {
@@ -13,10 +12,10 @@ function likesCard (id, evt, likes) {
       });
 }
 
-function unlikesCard(id, evt, likes) {
+function unlikesCard(id, evt, likes, button) {
     unlikeCard(id)
     .then((card) => {
-      evt.target.closest('element__panel_heart').classList.toggle('element__panel_heart_active');
+      button.classList.toggle('element__panel_heart_active');
       likes.textContent = card.likes.length;
     })
     .catch((err) => {
@@ -26,14 +25,10 @@ function unlikesCard(id, evt, likes) {
 function toggleLikeCard (newcard, id, evt, likes) {
     const button = newcard.querySelector('.element__panel_heart')
     if (button.classList.contains('element__panel_heart_active')) {
-        button.classList.toggle('element__panel_heart_active');
-        likes.textContent = parseInt(likes.textContent, 10)-1;
-        unlikesCard(id, evt, likes);
+        unlikesCard(id, evt, likes, button);
     }
     else {
-        button.classList.toggle('element__panel_heart_active');
-        likes.textContent = parseInt(likes.textContent, 10)+1;
-        likesCard(id, evt, likes);
+        likesCard(id, evt, likes , button);
     }
 }
 
@@ -66,7 +61,6 @@ export function creatCard(card, user) {
 
     const likes = newCard.querySelector('.element__panel_heart-number');
     likes.textContent = card.likes.length;
-
     const heart = newCard.querySelector('.element__panel_heart');
     if (checkLike(user, card)) {
         heart.classList.add('element__panel_heart_active');
@@ -74,20 +68,17 @@ export function creatCard(card, user) {
     else {
         heart.classList.remove('element__panel_heart_active');
     }
-
     heart.addEventListener('click', evt => {
-        toggleLikeCard(newCard, card._id, evt, likes, heart);
+        toggleLikeCard(newCard, card._id, evt, likes);//, heart);
     });
-    
+
     const deleteButton = newCard.querySelector('.element__delete-button');
     if (user._id !== card.owner._id) {
         deleteButton.classList.toggle('element__delete-button_invalid');
     }
-
     deleteButton.addEventListener('click', () => {
         deleteOwnerCard(card._id, newCard)
     });
-
     cardImage.addEventListener('click', () => {
         pictureImage.src = card.link;
         pictureImage.alt = card.name;
